@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!--
+    settings.html - 设置页面
+    ============================================================
+    功能说明：应用全局设置页面，包含：
+              - 个人信息修改入口
+              - 账号安全
+              - 消息通知（开关切换）
+              - 隐私设置
+              - 通用设置（缓存清理、关于我们）
+              - 退出登录
+    适用课程：《网页设计与制作》实训课教学
+  -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <script src="js/rem.js"></script>
+  <link rel="stylesheet" href="css/iconfont.css">
+  <link rel="stylesheet" href="css/compiled/style.css">
+  <link rel="stylesheet" href="css/compiled/settings.css">
+  <title>校园商城 - 设置</title>
+</head>
+<body>
+
+  <!-- ==================== 顶部导航栏 ==================== -->
+  <header class="settings-header">
+    <a href="javascript:history.back()" class="btn-back">
+      <i class="iconfont ri-arrow-left-line"></i>
+    </a>
+    <span class="header-title">设置</span>
+    <span class="header-placeholder"></span>
+  </header>
+
+  <!-- ==================== 主体内容 ==================== -->
+  <main class="settings-content">
+
+    <!-- ---------- 个人信息 ---------- -->
+    <section class="settings-group">
+      <div class="settings-item" id="btnProfile">
+        <div class="item-left">
+          <span class="item-label">头像</span>
+        </div>
+        <div class="item-right">
+          <img class="avatar-sm" src="images/icons/icon_avatar.png" alt="头像">
+          <i class="menu-arrow iconfont ri-arrow-right-s-line"></i>
+        </div>
+      </div>
+      <div class="settings-item" id="btnNickname">
+        <div class="item-left">
+          <span class="item-label">昵称</span>
+        </div>
+        <div class="item-right">
+          <span class="item-value">校园同学</span>
+          <i class="menu-arrow iconfont ri-arrow-right-s-line"></i>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------- 账号安全 ---------- -->
+    <section class="settings-group">
+      <div class="group-title">账号安全</div>
+      <div class="settings-item">
+        <div class="item-left">
+          <span class="item-label">修改密码</span>
+        </div>
+        <div class="item-right">
+          <i class="menu-arrow iconfont ri-arrow-right-s-line"></i>
+        </div>
+      </div>
+      <div class="settings-item">
+        <div class="item-left">
+          <span class="item-label">绑定手机</span>
+        </div>
+        <div class="item-right">
+          <span class="item-value">138****8888</span>
+          <i class="menu-arrow iconfont ri-arrow-right-s-line"></i>
+        </div>
+      </div>
+      <div class="settings-item">
+        <div class="item-left">
+          <span class="item-label">绑定邮箱</span>
+        </div>
+        <div class="item-right">
+          <span class="item-value">未绑定</span>
+          <i class="menu-arrow iconfont ri-arrow-right-s-line"></i>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------- 消息通知（带开关） ---------- -->
+    <section class="settings-group">
+      <div class="group-title">消息通知</div>
+      <div class="settings-item">
+        <div class="item-left">
+          <span class="item-label">推送通知</span>
+        </div>
+        <div class="item-right">
+          <label class="toggle-switch">
+            <input type="checkbox" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+      </div>
+      <div class="settings-item">
+        <div class="item-left">
+          <span class="item-label">声音提醒</span>
+        </div>
+        <div class="item-right">
+          <label class="toggle-switch">
+            <input type="checkbox" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+      </div>
+      <div class="settings-item">
+        <div class="item-left">
+          <span class="item-label">震动提醒</span>
+        </div>
+        <div class="item-right">
+          <label class="toggle-switch">
+            <input type="checkbox">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+      </div>
+      <div class="settings-item">
+        <div class="item-left">
+          <span class="item-label">促销活动通知</span>
+        </div>
+        <div class="item-right">
+          <label class="toggle-switch">
+            <input type="checkbox" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------- 隐私设置 ---------- -->
+    <section class="settings-group">
+      <div class="group-title">隐私设置</div>
+      <div class="settings-item">
+        <div class="item-left">
+          <span class="item-label">个性化推荐</span>
+        </div>
+        <div class="item-right">
+          <label class="toggle-switch">
+            <input type="checkbox" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+      </div>
+      <div class="settings-item">
+        <div class="item-left">
+          <span class="item-label">隐藏浏览记录</span>
+        </div>
+        <div class="item-right">
+          <label class="toggle-switch">
+            <input type="checkbox">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------- 通用设置 ---------- -->
+    <section class="settings-group">
+      <div class="group-title">通用设置</div>
+      <div class="settings-item" id="btnClearCache">
+        <div class="item-left">
+          <span class="item-label">清理缓存</span>
+        </div>
+        <div class="item-right">
+          <span class="item-value">12.5MB</span>
+          <i class="menu-arrow iconfont ri-arrow-right-s-line"></i>
+        </div>
+      </div>
+      <div class="settings-item">
+        <div class="item-left">
+          <span class="item-label">语言设置</span>
+        </div>
+        <div class="item-right">
+          <span class="item-value">简体中文</span>
+          <i class="menu-arrow iconfont ri-arrow-right-s-line"></i>
+        </div>
+      </div>
+      <div class="settings-item">
+        <div class="item-left">
+          <span class="item-label">检查更新</span>
+        </div>
+        <div class="item-right">
+          <span class="item-value">v1.0.0</span>
+          <i class="menu-arrow iconfont ri-arrow-right-s-line"></i>
+        </div>
+      </div>
+      <div class="settings-item" id="btnAbout">
+        <div class="item-left">
+          <span class="item-label">关于校园商城</span>
+        </div>
+        <div class="item-right">
+          <i class="menu-arrow iconfont ri-arrow-right-s-line"></i>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------- 退出登录 ---------- -->
+    <div class="logout-area">
+      <button class="btn-logout" id="btnLogout">退出登录</button>
+    </div>
+
+  </main>
+
+  <!-- ==================== JavaScript脚本 ==================== -->
+  <script src="js/common.js"></script>
+  <script src="js/settings.js"></script>
+
+</body>
+</html>

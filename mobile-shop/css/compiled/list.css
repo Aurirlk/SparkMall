@@ -1,0 +1,159 @@
+/**
+ * 商品列表页样式 - 编译版 (list.css)
+ * 此文件由 list.less 编译生成，供直接引用使用
+ */
+
+/* ==================== 排序筛选栏 ==================== */
+
+.sort-bar {
+  position: fixed;
+  top: 1.17rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 99;
+  width: 100%;
+  max-width: 640px;
+  height: 1.07rem;
+  background: #ffffff;
+  border-bottom: 1px solid #eeeeee;
+  display: flex;
+  align-items: center;
+}
+
+.sort-bar .sort-item {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-size: 0.32rem;
+  color: #333333;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  position: relative;
+}
+
+.sort-bar .sort-item.active {
+  color: #ff5000;
+  font-weight: bold;
+}
+
+.sort-bar .sort-item .sort-icons {
+  display: flex;
+  flex-direction: column;
+  margin-left: 0.08rem;
+  line-height: 1;
+}
+
+.sort-bar .sort-item .sort-icons .iconfont {
+  font-size: 0.21rem;
+  display: block;
+  color: #cccccc;
+}
+
+.sort-bar .sort-item.active .sort-icons .iconfont {
+  color: #ff5000;
+}
+
+/* ==================== 列表主体区域 ==================== */
+
+.list-content {
+  padding-top: 2.24rem;
+  padding-bottom: 1.33rem;
+  background: #f5f5f5;
+  min-height: 100vh;
+}
+
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0.24rem;
+  gap: 0.24rem;
+}
+
+.product-list .product-card {
+  width: calc((100% - 0.24rem) / 2);
+  background: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+}
+
+.product-list .product-card .product-img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  background: #f5f5f5;
+  display: block;
+}
+
+.product-list .product-card .product-info {
+  padding: 0.24rem;
+}
+
+.product-list .product-card .product-title {
+  font-size: 0.32rem;
+  color: #333333;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+}
+
+.product-list .product-card .sales-info {
+  font-size: 0.24rem;
+  color: #999999;
+  margin-top: 0.08rem;
+}
+
+.product-list .product-card .price-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.16rem;
+}
+
+.product-list .product-card .price-now {
+  font-size: 0.4rem;
+  font-weight: bold;
+  color: #ff0036;
+}
+
+.product-list .product-card .price-now::before {
+  content: "¥";
+  font-size: 0.28rem;
+  font-weight: normal;
+}
+
+.product-list .product-card .btn-similar {
+  font-size: 0.24rem;
+  color: #999999;
+  padding: 0.08rem 0.16rem;
+  border: 1px solid #eeeeee;
+  border-radius: 4px;
+  background: #ffffff;
+}
+
+/* ==================== 搜索结果为空提示 ==================== */
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 0;
+  color: #999999;
+}
+
+.empty-state .iconfont {
+  font-size: 1.6rem;
+  color: #cccccc;
+  margin-bottom: 0.32rem;
+}
+
+.empty-state .empty-text {
+  font-size: 0.32rem;
+}

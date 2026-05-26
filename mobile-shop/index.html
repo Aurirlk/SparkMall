@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!--
+    index.html - 首页
+    ============================================================
+    功能说明：移动电商网站首页，包含搜索栏、轮播图、
+              分类导航、限时秒杀、推荐商品等核心模块。
+    适用课程：《网页设计与制作》实训课教学
+  -->
+  <meta charset="UTF-8">
+
+  <!-- Viewport移动端适配：确保页面在移动设备上正确显示和缩放 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+
+  <!-- 优先加载rem自适应脚本，确保DOM渲染前根字体大小已设置 -->
+  <script src="js/rem.js"></script>
+
+  <!-- 样式文件 -->
+  <link rel="stylesheet" href="css/iconfont.css">
+  <link rel="stylesheet" href="css/compiled/style.css">
+
+  <title>校园商城 - 首页</title>
+</head>
+<body>
+
+  <!-- ==================== 顶部搜索栏（固定定位） ==================== -->
+  <header class="header-search">
+    <!-- 搜索框：使用Flexbox弹性布局，输入框自动撑满剩余宽度 -->
+    <div class="search-box">
+      <i class="iconfont ri-search-line"></i>
+      <input type="text" placeholder="搜索你想要的校园好物">
+    </div>
+    <!-- 搜索按钮（跳转/登录入口） -->
+    <span class="search-btn">搜索</span>
+  </header>
+
+  <!-- ==================== 主要内容区域 ==================== -->
+  <main class="main-content">
+
+    <!-- ---------- 轮播图区域 ---------- -->
+    <!-- 使用Flexbox布局实现滑动轮播，JS控制transform位移 -->
+    <section class="banner-section">
+      <div class="banner-track">
+        <!-- 每张幻灯片宽度100%，由JS计算offset进行位移 -->
+        <div class="banner-slide">
+          <img src="images/banner/banner_school_season.png" alt="春季新品上市">
+        </div>
+        <div class="banner-slide">
+          <img src="images/banner/banner_digital.png" alt="数码配件专场">
+        </div>
+        <div class="banner-slide">
+          <img src="images/banner/banner_snacks.png" alt="品牌特卖">
+        </div>
+      </div>
+      <!-- 指示器圆点由JS动态生成，此处无需手动编写 -->
+    </section>
+
+    <!-- ---------- 分类导航宫格（2行4列） ---------- -->
+    <section class="category-section">
+      <div class="category-grid">
+        <!-- 每个分类项占25%宽度，Flexbox自动换行 -->
+        <div class="category-item">
+          <div class="cate-icon">
+            <img src="images/category/cate_digital.png" alt="数码">
+          </div>
+          <span class="cate-name">数码产品</span>
+        </div>
+        <div class="category-item">
+          <div class="cate-icon">
+            <img src="images/category/cate_books.png" alt="图书">
+          </div>
+          <span class="cate-name">图书教材</span>
+        </div>
+        <div class="category-item">
+          <div class="cate-icon">
+            <img src="images/category/cate_clothing.png" alt="服饰">
+          </div>
+          <span class="cate-name">服饰鞋包</span>
+        </div>
+        <div class="category-item">
+          <div class="cate-icon">
+            <img src="images/category/cate_snacks.png" alt="零食">
+          </div>
+          <span class="cate-name">零食饮料</span>
+        </div>
+        <div class="category-item">
+          <div class="cate-icon">
+            <img src="images/category/cate_living.png" alt="生活">
+          </div>
+          <span class="cate-name">生活用品</span>
+        </div>
+        <div class="category-item">
+          <div class="cate-icon">
+            <img src="images/category/cate_entertainment.png" alt="影音">
+          </div>
+          <span class="cate-name">影音娱乐</span>
+        </div>
+        <div class="category-item">
+          <div class="cate-icon">
+            <img src="images/category/cate_stationery.png" alt="文具">
+          </div>
+          <span class="cate-name">文具耗材</span>
+        </div>
+        <div class="category-item">
+          <div class="cate-icon">
+            <img src="images/category/cate_sports.png" alt="运动">
+          </div>
+          <span class="cate-name">运动户外</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------- 限时秒杀楼层（横向滚动） ---------- -->
+    <section class="flash-sale">
+      <!-- 秒杀标题栏 -->
+      <div class="section-header">
+        <div class="title">
+          <i class="iconfont ri-customer-service-2-line"></i>
+          限时秒杀
+        </div>
+        <!-- 倒计时显示区域 -->
+        <div class="countdown">
+          <span class="time-num hour">00</span>
+          <span class="time-colon">:</span>
+          <span class="time-num min">00</span>
+          <span class="time-colon">:</span>
+          <span class="time-num sec">00</span>
+          <span style="margin-left: 4px;">后结束</span>
+        </div>
+      </div>
+      <!-- 秒杀商品横向滚动列表 -->
+      <div class="sale-list">
+        <!-- 每个sale-item宽度固定，flex-shrink:0防止压缩 -->
+        <div class="sale-item">
+          <img src="images/flash-sale/flash_bluetooth_earphone.png" alt="无线蓝牙耳机">
+          <div class="product-title">无线蓝牙耳机</div>
+          <div class="price-wrap">
+            <span class="price-now">59.9</span>
+            <span class="price-old">199</span>
+          </div>
+        </div>
+        <div class="sale-item">
+          <img src="images/flash-sale/flash_led_lamp.png" alt="LED护眼台灯">
+          <div class="product-title">LED护眼台灯</div>
+          <div class="price-wrap">
+            <span class="price-now">29.9</span>
+            <span class="price-old">89</span>
+          </div>
+        </div>
+        <div class="sale-item">
+          <img src="images/flash-sale/flash_thermos.png" alt="不锈钢保温杯">
+          <div class="product-title">不锈钢保温杯</div>
+          <div class="price-wrap">
+            <span class="price-now">39.9</span>
+            <span class="price-old">99</span>
+          </div>
+        </div>
+        <div class="sale-item">
+          <img src="images/flash-sale/flash_mouse.png" alt="无线静音鼠标">
+          <div class="product-title">无线静音鼠标</div>
+          <div class="price-wrap">
+            <span class="price-now">19.9</span>
+            <span class="price-old">69</span>
+          </div>
+        </div>
+        <div class="sale-item">
+          <img src="images/flash-sale/flash_powerbank.png" alt="超薄充电宝">
+          <div class="product-title">超薄充电宝</div>
+          <div class="price-wrap">
+            <span class="price-now">49.9</span>
+            <span class="price-old">129</span>
+          </div>
+        </div>
+        <div class="sale-item">
+          <img src="images/flash-sale/flash_snack_box.png" alt="零食大礼包">
+          <div class="product-title">零食大礼包</div>
+          <div class="price-wrap">
+            <span class="price-now">9.9</span>
+            <span class="price-old">39</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------- 推荐商品列表（两列网格） ---------- -->
+    <section class="recommend-section">
+      <div class="section-header">
+        <span class="title">为你推荐</span>
+        <span class="more">查看更多 &gt;</span>
+      </div>
+      <!-- 商品网格：Flexbox两列，自动换行 -->
+      <div class="product-grid">
+        <!-- 商品卡片：每个卡片宽度为(100%-gap)/2 -->
+        <div class="product-card">
+          <img class="product-img" src="images/product/product-1.png" alt="女士连衣裙">
+          <div class="product-info">
+            <div class="product-title">优雅米色法式连衣裙 V领收腰 柔软面料</div>
+            <div class="price-row">
+              <span class="price-now">89.9</span>
+              <button class="btn-cart">
+                <i class="iconfont ri-shopping-cart-line"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="product-card">
+          <img class="product-img" src="images/product/product-2.png" alt="男士休闲鞋">
+          <div class="product-info">
+            <div class="product-title">白色运动休闲鞋 网面材质 厚底百搭</div>
+            <div class="price-row">
+              <span class="price-now">19.9</span>
+              <button class="btn-cart">
+                <i class="iconfont ri-shopping-cart-line"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="product-card">
+          <img class="product-img" src="images/product/product-3.png" alt="女士手提包">
+          <div class="product-info">
+            <div class="product-title">焦糖色真皮手提包 金色五金 简约大方</div>
+            <div class="price-row">
+              <span class="price-now">299.9</span>
+              <button class="btn-cart">
+                <i class="iconfont ri-shopping-cart-line"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="product-card">
+          <img class="product-img" src="images/product/product-4.png" alt="蓝牙耳机">
+          <div class="product-info">
+            <div class="product-title">白色真无线蓝牙耳机 降噪长续航</div>
+            <div class="price-row">
+              <span class="price-now">25.9</span>
+              <button class="btn-cart">
+                <i class="iconfont ri-shopping-cart-line"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="product-card">
+          <img class="product-img" src="images/product/product-5.png" alt="男士卫衣">
+          <div class="product-info">
+            <div class="product-title">浅灰色连帽卫衣 纯棉质感 宽松休闲</div>
+            <div class="price-row">
+              <span class="price-now">15.9</span>
+              <button class="btn-cart">
+                <i class="iconfont ri-shopping-cart-line"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="product-card">
+          <img class="product-img" src="images/product/product-6.png" alt="遮阳帽">
+          <div class="product-info">
+            <div class="product-title">米色宽檐遮阳帽 蝴蝶结装饰 夏日必备</div>
+            <div class="price-row">
+              <span class="price-now">35.9</span>
+              <button class="btn-cart">
+                <i class="iconfont ri-shopping-cart-line"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="product-card">
+          <img class="product-img" src="images/product/product-7.png" alt="女士凉鞋">
+          <div class="product-info">
+            <div class="product-title">棕色罗马风平底凉鞋 交叉绑带 舒适百搭</div>
+            <div class="price-row">
+              <span class="price-now">22.9</span>
+              <button class="btn-cart">
+                <i class="iconfont ri-shopping-cart-line"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="product-card">
+          <img class="product-img" src="images/product/product-8.png" alt="智能手表">
+          <div class="product-info">
+            <div class="product-title">黑色方形智能手表 硅胶表带 多功能</div>
+            <div class="price-row">
+              <span class="price-now">45.9</span>
+              <button class="btn-cart">
+                <i class="iconfont ri-shopping-cart-line"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== 底部固定导航栏 ==================== -->
+  <footer class="tabbar">
+    <!-- 当前页为"首页"，添加active类名高亮 -->
+    <div class="tab-item active" data-link="index.html">
+      <i class="iconfont ri-home-line"></i>
+      <span class="tab-label">首页</span>
+    </div>
+    <div class="tab-item" data-link="list.html">
+      <i class="iconfont ri-apps-2-line"></i>
+      <span class="tab-label">分类</span>
+    </div>
+    <div class="tab-item" data-link="cart.html">
+      <i class="iconfont ri-shopping-cart-line"></i>
+      <span class="tab-label">购物车</span>
+    </div>
+    <div class="tab-item" data-link="my.html">
+      <i class="iconfont ri-user-line"></i>
+      <span class="tab-label">我的</span>
+    </div>
+    <!-- 中间凸起 AI 导购按钮 -->
+    <div class="tab-center" onclick="location.href='ai-chat.html'">
+      <i class="iconfont ri-customer-service-2-line"></i>
+      <span class="tab-label">AI导购</span>
+    </div>
+  </footer>
+
+  <!-- ==================== JavaScript脚本 ==================== -->
+  <!-- 通用交互功能（Toast提示、轮播图、倒计时、Tab切换、购物车反馈等） -->
+  <script src="js/common.js"></script>
+
+  <!-- 页面初始化：执行所有通用功能的初始化 -->
+  <script>
+    // DOM加载完成后执行初始化
+    document.addEventListener('DOMContentLoaded', function () {
+      // 初始化底部Tab栏切换
+      Common.initTabbar();
+
+      // 初始化轮播图（自动播放间隔3秒）
+      Common.initBanner('.banner-section', 3000);
+
+      // 初始化秒杀倒计时
+      Common.initCountdown('.flash-sale .countdown');
+
+      // 初始化购物车按钮点击反馈
+      Common.initAddCartButtons();
+
+      // 初始化搜索栏交互
+      Common.initSearch();
+    });
+  </script>
+
+</body>
+</html>

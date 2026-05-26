@@ -1,0 +1,618 @@
+/**
+ * 商品详情页样式 - 编译版 (detail.css)
+ * 此文件由 detail.less 编译生成，供直接引用使用
+ */
+
+/* ==================== 详情页顶部导航栏 ==================== */
+
+.detail-header {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  width: 100%;
+  max-width: 640px;
+  height: 1.17rem;
+  background: #ffffff;
+  border-bottom: 1px solid #eeeeee;
+  display: flex;
+  align-items: center;
+  padding: 0 0.32rem;
+}
+
+.detail-header .btn-back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 0.8rem;
+  height: 0.8rem;
+  flex-shrink: 0;
+}
+
+.detail-header .btn-back .iconfont {
+  font-size: 0.56rem;
+  color: #333333;
+}
+
+.detail-header .header-title {
+  flex: 1;
+  text-align: center;
+  font-size: 0.4rem;
+  color: #333333;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 0.32rem;
+}
+
+.detail-header .header-placeholder {
+  width: 0.8rem;
+  flex-shrink: 0;
+}
+
+.detail-header .btn-share {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 0.8rem;
+  height: 0.8rem;
+  flex-shrink: 0;
+}
+
+.detail-header .btn-share .iconfont {
+  font-size: 0.48rem;
+  color: #333333;
+}
+
+/* ==================== 详情主体内容 ==================== */
+
+.detail-content {
+  padding-top: 1.17rem;
+  padding-bottom: 1.6rem;
+  background: #f5f5f5;
+}
+
+/* ---------- 商品大图区域 ---------- */
+
+.product-gallery {
+  width: 100%;
+  background: #ffffff;
+  position: relative;
+}
+
+.product-gallery .gallery-main {
+  width: 100%;
+  display: block;
+}
+
+/* ---------- 商品价格区域 ---------- */
+
+.price-section {
+  background: #ffffff;
+  padding: 0.32rem;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.price-section .price-wrap {
+  display: flex;
+  align-items: baseline;
+}
+
+.price-section .price-now {
+  font-size: 0.72rem;
+  font-weight: bold;
+  color: #ff0036;
+}
+
+.price-section .price-now::before {
+  content: "¥";
+  font-size: 0.4rem;
+}
+
+.price-section .price-old {
+  font-size: 0.28rem;
+  color: #cccccc;
+  text-decoration: line-through;
+  margin-left: 0.24rem;
+}
+
+.price-section .price-old::before {
+  content: "¥";
+}
+
+.price-section .promo-tags {
+  display: flex;
+  gap: 0.16rem;
+  margin-top: 0.16rem;
+}
+
+.price-section .promo-tag {
+  font-size: 0.24rem;
+  color: #ff5000;
+  background: #fff3ed;
+  padding: 2px 0.16rem;
+  border-radius: 4px;
+  border: 1px solid #ffd4c0;
+}
+
+/* ---------- 商品标题 ---------- */
+
+.title-section {
+  background: #ffffff;
+  padding: 0.32rem;
+  margin-top: 0.24rem;
+}
+
+.title-section .product-title {
+  font-size: 0.4rem;
+  color: #333333;
+  font-weight: bold;
+  line-height: 1.5;
+}
+
+.title-section .product-subtitle {
+  font-size: 0.28rem;
+  color: #ff0036;
+  margin-top: 0.16rem;
+  background: #fff3ed;
+  display: inline-block;
+  padding: 2px 0.16rem;
+  border-radius: 4px;
+}
+
+/* ---------- 规格选择区域 ---------- */
+
+.spec-section {
+  background: #ffffff;
+  padding: 0.32rem;
+  margin-top: 0.24rem;
+}
+
+.spec-section .spec-title {
+  font-size: 0.32rem;
+  color: #333333;
+  font-weight: bold;
+  margin-bottom: 0.32rem;
+}
+
+.spec-section .spec-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.24rem;
+}
+
+.spec-section .spec-btn {
+  padding: 0.16rem 0.32rem;
+  font-size: 0.32rem;
+  color: #333333;
+  background: #f5f5f5;
+  border: 1px solid #eeeeee;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 1.6rem;
+  text-align: center;
+}
+
+.spec-section .spec-btn.active {
+  color: #ff5000;
+  background: #fff3ed;
+  border-color: #ff5000;
+}
+
+.spec-section .spec-btn.disabled {
+  color: #cccccc;
+  background: #f5f5f5;
+  border-color: #eeeeee;
+  cursor: not-allowed;
+  position: relative;
+  overflow: hidden;
+}
+
+.spec-section .spec-btn.disabled::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -10%;
+  width: 120%;
+  height: 1px;
+  background: #cccccc;
+  transform: rotate(-30deg);
+}
+
+/* ---------- 商品详情描述 ---------- */
+
+.desc-section {
+  background: #ffffff;
+  padding: 0.32rem;
+  margin-top: 0.24rem;
+}
+
+.desc-section .desc-title {
+  font-size: 0.32rem;
+  color: #333333;
+  font-weight: bold;
+  margin-bottom: 0.24rem;
+  text-align: center;
+}
+
+.desc-section .desc-content {
+  font-size: 0.32rem;
+  color: #999999;
+  line-height: 1.8;
+}
+
+/* ==================== 底部购买操作栏 ==================== */
+
+.buy-bar {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  width: 100%;
+  max-width: 640px;
+  height: 1.33rem;
+  background: #ffffff;
+  border-top: 1px solid #eeeeee;
+  display: flex;
+  align-items: center;
+  padding: 0 0.32rem;
+  gap: 0.24rem;
+}
+
+.buy-bar .bar-icons {
+  display: flex;
+  gap: 0.32rem;
+  flex-shrink: 0;
+}
+
+.buy-bar .bar-icon-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.buy-bar .bar-icon-item .iconfont {
+  font-size: 0.56rem;
+  color: #333333;
+}
+
+.buy-bar .bar-icon-item .icon-label {
+  font-size: 0.24rem;
+  color: #999999;
+  margin-top: 2px;
+}
+
+.buy-bar .btn-add-cart {
+  flex: 1;
+  height: 0.96rem;
+  background: linear-gradient(135deg, #ff7840, #ff5000);
+  color: #ffffff;
+  font-size: 0.4rem;
+  font-weight: bold;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s ease;
+}
+
+.buy-bar .btn-add-cart:active {
+  opacity: 0.8;
+}
+
+.buy-bar .btn-buy-now {
+  flex: 1;
+  height: 0.96rem;
+  background: linear-gradient(135deg, #ff7840, #ff0036);
+  color: #ffffff;
+  font-size: 0.4rem;
+  font-weight: bold;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s ease;
+}
+
+.buy-bar .btn-buy-now:active {
+  opacity: 0.8;
+}
+
+/* ==================== AI导购悬浮按钮 ==================== */
+
+.ai-float-btn {
+  position: fixed;
+  bottom: 2.13rem;
+  right: 0.32rem;
+  z-index: 99;
+  width: 1.33rem;
+  height: 1.33rem;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  animation: ai-float-bounce 2s ease-in-out infinite;
+}
+
+.ai-float-btn:active {
+  transform: scale(0.92);
+}
+
+.ai-float-btn .iconfont {
+  color: #ffffff;
+  font-size: 0.64rem;
+}
+
+@keyframes ai-float-bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+/* ==================== AI导购对话框 ==================== */
+
+.ai-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0);
+  z-index: 200;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  pointer-events: none;
+  transition: background 0.25s ease;
+}
+
+.ai-overlay.open {
+  background: rgba(0, 0, 0, 0.5);
+  pointer-events: auto;
+}
+
+.ai-dialog {
+  width: 100%;
+  max-width: 640px;
+  height: 75vh;
+  background: #ffffff;
+  border-radius: 12px 12px 0 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transform: translateY(100%);
+  transition: transform 0.28s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.ai-overlay.open .ai-dialog {
+  transform: translateY(0);
+  animation: ai-dialog-bounce 0.36s cubic-bezier(0.32, 0.72, 0, 1) forwards;
+}
+
+@keyframes ai-dialog-bounce {
+  0%   { transform: translateY(100%) scale(1); }
+  60%  { transform: translateY(-2%) scale(1); }
+  80%  { transform: translateY(0) scale(0.98); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+.ai-dialog .ai-dialog-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.32rem;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
+.ai-dialog .ai-dialog-header .ai-title {
+  font-size: 0.4rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 0.16rem;
+}
+
+.ai-dialog .ai-dialog-header .ai-title .iconfont {
+  font-size: 0.48rem;
+  color: #ffffff;
+}
+}
+
+.ai-dialog .ai-dialog-header .btn-close {
+  width: 0.8rem;
+  height: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.ai-dialog .ai-dialog-header .btn-close .iconfont {
+  color: #ffffff;
+  font-size: 0.48rem;
+}
+
+.ai-dialog .ai-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0.32rem;
+  background: #f8f9fa;
+}
+
+.ai-dialog .ai-message {
+  display: flex;
+  margin-bottom: 0.32rem;
+  animation: ai-msg-fade-in 0.3s ease;
+}
+
+@keyframes ai-msg-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ai-dialog .ai-message.ai-msg {
+  justify-content: flex-start;
+}
+
+.ai-dialog .ai-message.ai-msg .msg-avatar {
+  width: 0.85rem;
+  height: 0.85rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-right: 0.24rem;
+}
+
+.ai-dialog .ai-message.ai-msg .msg-avatar .iconfont {
+  color: #ffffff;
+  font-size: 0.48rem;
+}
+
+.ai-dialog .ai-message.ai-msg .msg-bubble {
+  max-width: 75%;
+  background: #ffffff;
+  border-radius: 4px 8px 8px 4px;
+  padding: 0.24rem;
+  font-size: 0.32rem;
+  color: #333333;
+  line-height: 1.6;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+  word-break: break-all;
+}
+
+.ai-dialog .ai-message.user-msg {
+  justify-content: flex-end;
+}
+
+.ai-dialog .ai-message.user-msg .msg-bubble {
+  max-width: 75%;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-radius: 8px 4px 4px 8px;
+  padding: 0.24rem;
+  font-size: 0.32rem;
+  color: #ffffff;
+  line-height: 1.6;
+  word-break: break-all;
+}
+
+.ai-dialog .ai-typing .msg-bubble {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0.32rem 0.24rem;
+}
+
+.ai-dialog .ai-typing .typing-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #999999;
+  animation: ai-typing-bounce 1.2s infinite;
+}
+
+.ai-dialog .ai-typing .typing-dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.ai-dialog .ai-typing .typing-dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes ai-typing-bounce {
+  0%, 60%, 100% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-6px);
+  }
+}
+
+.ai-dialog .ai-input-area {
+  display: flex;
+  align-items: center;
+  padding: 0.24rem 0.32rem;
+  background: #ffffff;
+  border-top: 1px solid #eeeeee;
+  gap: 0.24rem;
+  flex-shrink: 0;
+}
+
+.ai-dialog .ai-input-area input {
+  flex: 1;
+  height: 0.96rem;
+  background: #f5f5f5;
+  border-radius: 20px;
+  padding: 0 0.32rem;
+  font-size: 0.32rem;
+  color: #333333;
+}
+
+.ai-dialog .ai-input-area input::placeholder {
+  color: #cccccc;
+}
+
+.ai-dialog .ai-input-area .btn-send {
+  width: 0.96rem;
+  height: 0.96rem;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.ai-dialog .ai-input-area .btn-send:active {
+  transform: scale(0.9);
+}
+
+.ai-dialog .ai-input-area .btn-send .iconfont {
+  color: #ffffff;
+  font-size: 0.48rem;
+}
+
+/* ==================== Toast提示 ==================== */
+
+.toast {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  z-index: 300;
+  background: rgba(0, 0, 0, 0.75);
+  color: #ffffff;
+  padding: 0.32rem 0.4rem;
+  border-radius: 8px;
+  font-size: 0.32rem;
+  white-space: nowrap;
+  pointer-events: none;
+  transition: transform 0.2s ease;
+}
+
+.toast.show {
+  transform: translate(-50%, -50%) scale(1);
+}

@@ -1,0 +1,43 @@
+/* ============================================================
+ * iconfont.css — Remix Icon 图标库 (CDN)
+ * ============================================================
+ * 使用 Remix Icon 开源图标库替代 PNG 图标，零生成成本。
+ *
+ * 图标搜索：https://remixicon.com
+ * 使用方式：<i class="iconfont ri-home-line"></i>
+ *
+ * 线框风格加 -line 后缀（如 ri-home-line）
+ * 实心填充加 -fill 后缀（如 ri-home-fill）
+ * ============================================================ */
+
+@import url("https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css");
+
+/* ---------- 图标基类 ---------- */
+.iconfont {
+  font-family: "remixicon";
+  font-size: 0.48rem;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1;
+}
+
+/* ---------- 尺寸变体 ---------- */
+.iconfont-xs { font-size: 0.21rem; }
+.iconfont-sm { font-size: 0.32rem; }
+.iconfont-md { font-size: 0.48rem; }
+.iconfont-lg { font-size: 0.64rem; }
+.iconfont-xl { font-size: 0.8rem; }
+
+/* ---------- 底部导航栏图标 ---------- */
+.tabbar .tab-item .iconfont {
+  font-size: 0.56rem;
+  color: #999999;
+  transition: color 0.2s ease;
+}
+
+.tabbar .tab-item.active .iconfont {
+  color: #ff5000;
+}

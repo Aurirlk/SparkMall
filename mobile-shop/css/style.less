@@ -1,0 +1,550 @@
+/* ============================================================
+ * 首页样式 (style.less)
+ * 用途：首页所有样式定义
+ * 依赖：common.less（变量定义）
+ * ============================================================ */
+
+@import "common.less";
+
+/* ==================== 全局重置样式 ==================== */
+
+/* 清除所有元素的默认内外边距，统一盒模型 */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* HTML根元素设置 */
+html {
+  /* 禁止用户缩放（移动端适配需要） */
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Body基础样式 */
+body {
+  font-family: @font-family;
+  font-size: @font-md;
+  color: @text-dark;
+  background-color: @bg-light;
+  line-height: 1.5;
+  /* 页面居中，最大宽度限制，防止在平板上过度拉伸 */
+  max-width: @max-page-width;
+  margin: 0 auto;
+  /* 溢出隐藏，防止横向滚动条 */
+  overflow-x: hidden;
+}
+
+/* 链接样式重置 */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* 图片自适应容器宽度 */
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* 列表样式清除 */
+ul, ol {
+  list-style: none;
+}
+
+/* 输入框基础样式 */
+input {
+  border: none;
+  outline: none;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* 按钮基础样式重置 */
+button {
+  border: none;
+  outline: none;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* ==================== 顶部搜索栏 ==================== */
+
+/* 固定在顶部的搜索栏容器 */
+.header-search {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  width: 100%;
+  max-width: @max-page-width;
+  height: @header-height;
+  background: @primary-color;
+  display: flex;
+  align-items: center;
+  padding: 0 @spacing-lg;
+}
+
+/* 搜索栏内搜索框 */
+.header-search .search-box {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  height: 0.8rem;
+  background: @bg-white;
+  border-radius: @radius-sm + 16px; /* 大圆角胶囊形状 */
+  padding: 0 @spacing-lg;
+  overflow: hidden;
+}
+
+.header-search .search-box .icon-search {
+  font-size: @font-lg;
+  color: @text-gray;
+  margin-right: @spacing-sm;
+  flex-shrink: 0;
+}
+
+.header-search .search-box input {
+  flex: 1;
+  height: 100%;
+  font-size: @font-md;
+  color: @text-dark;
+  background: transparent;
+}
+
+.header-search .search-box input::placeholder {
+  color: @text-light;
+}
+
+/* 搜索栏右上角登录/消息入口 */
+.header-search .search-btn {
+  color: @bg-white;
+  font-size: @font-lg;
+  margin-left: @spacing-lg;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ==================== 主要内容区域 ==================== */
+
+/* 为固定头部和底部留出空间 */
+.main-content {
+  padding-top: @header-height;
+  padding-bottom: @tabbar-height;
+}
+
+/* ==================== 轮播图区域 ==================== */
+
+/* 轮播图外层容器 */
+.banner-section {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+/* 轮播图滑动轨道，使用flex水平排列 */
+.banner-track {
+  display: flex;
+  transition: transform @transition-normal;
+  will-change: transform;
+}
+
+/* 每张轮播图 */
+.banner-slide {
+  flex-shrink: 0;
+  width: 100%;
+}
+
+.banner-slide img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 轮播指示器圆点 */
+.banner-dots {
+  position: absolute;
+  bottom: @spacing-lg;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: @spacing-sm;
+}
+
+.banner-dots .dot {
+  width: 0.16rem;
+  height: 0.16rem;
+  border-radius: @radius-round;
+  background: rgba(255, 255, 255, 0.5);
+  transition: all @transition-fast;
+}
+
+.banner-dots .dot.active {
+  width: 0.4rem;
+  border-radius: @radius-sm;
+  background: @bg-white;
+}
+
+/* ==================== 分类导航宫格 ==================== */
+
+/* 分类导航区域 */
+.category-section {
+  background: @bg-white;
+  padding: @spacing-xl @spacing-lg;
+}
+
+/* 宫格容器，2行4列 */
+.category-grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* 每个分类项占25%宽度（100/4=25） */
+.category-item {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: @spacing-lg 0;
+}
+
+/* 分类图标容器 */
+.category-item .cate-icon {
+  width: 1.07rem;   /* 40px */
+  height: 1.07rem;  /* 40px */
+  border-radius: @radius-round;
+  background: @bg-light;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: @spacing-sm;
+  overflow: hidden;
+}
+
+.category-item .cate-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.category-item .cate-icon .iconfont {
+  font-size: 0.64rem;  /* 24px */
+  color: @primary-color;
+}
+
+/* 分类文字 */
+.category-item .cate-name {
+  font-size: @font-sm;
+  color: @text-dark;
+  text-align: center;
+  margin-top: @spacing-xs;
+}
+
+/* ==================== 限时秒杀楼层 ==================== */
+
+/* 秒杀区域 */
+.flash-sale {
+  background: @bg-white;
+  margin: @spacing-md 0;
+  padding: @spacing-xl @spacing-lg;
+}
+
+/* 秒杀标题栏 */
+.flash-sale .section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: @spacing-lg;
+}
+
+.flash-sale .section-header .title {
+  font-size: @font-xl;
+  font-weight: bold;
+  color: @text-dark;
+  display: flex;
+  align-items: center;
+}
+
+.flash-sale .section-header .title .iconfont {
+  color: @price-red;
+  margin-right: @spacing-sm;
+  font-size: @font-xl;
+}
+
+/* 倒计时容器 */
+.flash-sale .section-header .countdown {
+  display: flex;
+  align-items: center;
+  font-size: @font-sm;
+  color: @text-dark;
+}
+
+.flash-sale .section-header .countdown .time-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 0.53rem;    /* 20px */
+  height: 0.53rem;
+  background: @text-dark;
+  color: @bg-white;
+  border-radius: @radius-sm;
+  font-size: @font-xs;
+  margin: 0 2px;
+}
+
+.flash-sale .section-header .countdown .time-colon {
+  margin: 0 2px;
+  font-weight: bold;
+}
+
+/* 秒杀商品横向滚动容器 */
+.flash-sale .sale-list {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  gap: @spacing-md;
+  /* 隐藏滚动条（WebKit浏览器） */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  /* 滚动平滑 */
+  scroll-behavior: smooth;
+}
+
+/* 秒杀商品卡片 */
+.flash-sale .sale-item {
+  flex-shrink: 0;
+  width: 2.53rem;   /* 95px */
+  text-align: center;
+}
+
+.flash-sale .sale-item img {
+  width: 100%;
+  height: 2.53rem;  /* 正方形图片 */
+  object-fit: cover;
+  border-radius: @radius-md;
+  background: @bg-light;
+}
+
+.flash-sale .sale-item .product-title {
+  font-size: @font-sm;
+  color: @text-dark;
+  margin-top: @spacing-sm;
+  /* 单行省略号 */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.flash-sale .sale-item .price-wrap {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  margin-top: @spacing-xs;
+}
+
+.flash-sale .sale-item .price-now {
+  font-size: @font-lg;
+  font-weight: bold;
+  color: @price-red;
+}
+
+.flash-sale .sale-item .price-now::before {
+  content: "¥";
+  font-size: @font-sm;
+}
+
+.flash-sale .sale-item .price-old {
+  font-size: @font-xs;
+  color: @text-light;
+  text-decoration: line-through;
+  margin-left: @spacing-xs;
+}
+
+.flash-sale .sale-item .price-old::before {
+  content: "¥";
+}
+
+/* ==================== 推荐商品列表 ==================== */
+
+/* 推荐商品区域 */
+.recommend-section {
+  background: @bg-white;
+  padding: @spacing-xl @spacing-lg;
+}
+
+.recommend-section .section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: @spacing-lg;
+}
+
+.recommend-section .section-header .title {
+  font-size: @font-xl;
+  font-weight: bold;
+  color: @text-dark;
+}
+
+.recommend-section .section-header .more {
+  font-size: @font-sm;
+  color: @text-gray;
+}
+
+/* 商品网格：使用Flexbox两列布局 */
+.product-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: @spacing-md;
+}
+
+/* 每列商品卡片宽度： (100% - gap) / 2 */
+.product-card {
+  width: calc((100% - @spacing-md) / 2);
+  background: @bg-card;
+  border-radius: @radius-md;
+  overflow: hidden;
+  box-shadow: @shadow-sm;
+}
+
+/* 商品图片 */
+.product-card .product-img {
+  width: 100%;
+  /* 保持正方形比例 */
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  background: @bg-light;
+  display: block;
+}
+
+/* 商品信息区域 */
+.product-card .product-info {
+  padding: @spacing-md;
+}
+
+/* 商品标题：最多两行 */
+.product-card .product-title {
+  font-size: @font-md;
+  color: @text-dark;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+}
+
+/* 价格与购物车行 */
+.product-card .price-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: @spacing-sm;
+}
+
+.product-card .price-now {
+  font-size: @font-lg;
+  font-weight: bold;
+  color: @price-red;
+}
+
+.product-card .price-now::before {
+  content: "¥";
+  font-size: @font-sm;
+  font-weight: normal;
+}
+
+.product-card .btn-cart {
+  width: 0.64rem;   /* 24px */
+  height: 0.64rem;
+  background: @primary-color;
+  border-radius: @radius-round;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform @transition-fast;
+}
+
+.product-card .btn-cart:active {
+  transform: scale(0.9);
+}
+
+.product-card .btn-cart .iconfont {
+  color: @bg-white;
+  font-size: 0.4rem;  /* 15px */
+}
+
+/* ==================== 底部导航栏 ==================== */
+
+/* 固定在底部的Tab导航栏 */
+.tabbar {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  width: 100%;
+  max-width: @max-page-width;
+  height: @tabbar-height;
+  background: @bg-white;
+  border-top: 1px solid @border-color;
+  display: flex;
+  align-items: center;
+}
+
+/* 每个Tab项均分宽度 */
+.tabbar .tab-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.tabbar .tab-item .iconfont {
+  font-size: 0.56rem;  /* 21px */
+  color: @text-gray;
+  transition: color @transition-fast;
+}
+
+.tabbar .tab-item .tab-label {
+  font-size: @font-xs;
+  color: @text-gray;
+  margin-top: 2px;
+  transition: color @transition-fast;
+}
+
+/* 当前激活Tab高亮效果 */
+.tabbar .tab-item.active .iconfont,
+.tabbar .tab-item.active .tab-label {
+  color: @primary-color;
+}
+
+/* ==================== Toast提示 ==================== */
+
+/* 加入购物车提示弹层 */
+.toast {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  z-index: 200;
+  background: rgba(0, 0, 0, 0.75);
+  color: @bg-white;
+  padding: @spacing-lg @spacing-xl;
+  border-radius: @radius-md;
+  font-size: @font-md;
+  white-space: nowrap;
+  pointer-events: none;
+  transition: transform @transition-fast;
+}
+
+.toast.show {
+  transform: translate(-50%, -50%) scale(1);
+}

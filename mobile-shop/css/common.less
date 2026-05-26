@@ -1,0 +1,66 @@
+/* ============================================================
+ * 公共变量文件 (common.less)
+ * 用途：定义项目中使用的所有Less变量，方便统一管理和修改
+ * 所有样式文件通过 @import 引入此文件即可使用变量
+ * ============================================================ */
+
+/* ---------- 设计稿基准尺寸 ---------- */
+/* 设计稿宽度375px，1rem = 37.5px，方便px转rem计算 */
+@design-width: 375;
+@rem-base: 37.5;
+
+/* ---------- 颜色变量 ---------- */
+@primary-color: #ff5000;       /* 主色调：橙色，用于按钮、高亮、标签 */
+@primary-light: #ff7840;       /* 主色浅色：用于hover、渐变 */
+@primary-dark: #e04400;        /* 主色深色：用于按下状态 */
+@text-dark: #333333;           /* 深色文字：标题、正文 */
+@text-gray: #999999;           /* 灰色文字：辅助说明 */
+@text-light: #cccccc;          /* 浅灰色：占位文字 */
+@bg-white: #ffffff;            /* 背景白色 */
+@bg-light: #f5f5f5;            /* 浅灰背景：页面底色 */
+@bg-card: #ffffff;             /* 卡片背景 */
+@border-color: #eeeeee;        /* 边框颜色 */
+@price-red: #ff0036;           /* 价格红色 */
+@tag-yellow: #ffe0c0;          /* 标签黄色背景 */
+
+/* ---------- 字号变量（已按设计稿换算为rem） ---------- */
+/* 设计稿px值 / 37.5 = rem值 */
+@font-xs: 0.24rem;             /* 9px  - 极小文字 */
+@font-sm: 0.28rem;             /* 10.5px - 小号文字 */
+@font-md: 0.32rem;             /* 12px - 正文 */
+@font-lg: 0.4rem;              /* 15px - 标题 */
+@font-xl: 0.48rem;             /* 18px - 大标题 */
+@font-xxl: 0.56rem;            /* 21px - 特大标题 */
+
+/* ---------- 间距变量 ---------- */
+@spacing-xs: 0.08rem;          /* 3px */
+@spacing-sm: 0.16rem;          /* 6px */
+@spacing-md: 0.24rem;          /* 9px */
+@spacing-lg: 0.32rem;          /* 12px */
+@spacing-xl: 0.4rem;           /* 15px */
+@spacing-xxl: 0.53rem;         /* 20px */
+
+/* ---------- 圆角变量 ---------- */
+@radius-sm: 4px;
+@radius-md: 8px;
+@radius-lg: 12px;
+@radius-round: 50%;
+
+/* ---------- 阴影变量 ---------- */
+@shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.06);
+@shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);
+@shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.12);
+
+/* ---------- 固定尺寸变量 ---------- */
+@header-height: 1.17rem;       /* 44px - 顶部导航栏高度 */
+@tabbar-height: 1.33rem;       /* 50px - 底部导航栏高度 */
+@max-page-width: 640px;        /* 页面最大宽度 */
+
+/* ---------- 过渡动画 ---------- */
+@transition-fast: 0.2s ease;
+@transition-normal: 0.3s ease;
+
+/* ---------- 字体栈 ---------- */
+@font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+              "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei",
+              sans-serif;

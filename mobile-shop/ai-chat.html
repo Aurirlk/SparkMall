@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <script src="js/rem.js"></script>
+  <link rel="stylesheet" href="css/iconfont.css">
+  <link rel="stylesheet" href="css/compiled/style.css">
+  <link rel="stylesheet" href="css/compiled/ai-chat.css">
+  <title>校园商城 - AI导购</title>
+</head>
+<body>
+
+  <!-- ==================== 顶部导航栏 ==================== -->
+  <header class="chat-header">
+    <a href="javascript:history.back()" class="btn-back">
+      <i class="iconfont ri-arrow-left-line"></i>
+    </a>
+    <span class="header-title">AI导购助手</span>
+    <span class="header-placeholder"></span>
+  </header>
+
+  <!-- ==================== 消息区域 ==================== -->
+  <main class="chat-messages" id="chatMessages">
+    <!-- 欢迎语 -->
+    <div class="chat-msg ai-msg">
+      <div class="msg-avatar">
+        <i class="iconfont ri-customer-service-2-line"></i>
+      </div>
+      <div class="msg-bubble">
+        你好！我是校园商城的AI导购助手~<br><br>
+        你可以问我商品推荐、价格查询、优惠活动、订单问题等等，我会尽力帮你解答！
+      </div>
+    </div>
+  </main>
+
+  <!-- ==================== 底部输入栏 ==================== -->
+  <footer class="chat-input-bar">
+    <input type="text" id="chatInput" placeholder="输入你想咨询的问题..." autocomplete="off">
+    <button class="btn-send" id="btnSend">
+      <i class="iconfont ri-send-plane-line"></i>
+    </button>
+  </footer>
+
+  <script src="js/common.js"></script>
+  <script>
+    (function () {
+      'use strict';
+
+      // ==================== Coze API 配置 ====================
+      var COZE_CONFIG = {
+        bot_id: '7642679727366438975',
+        token: 'pat_iCPkCz1fubigFeMlVOQxnKldT6dKTyIdtifDgJJN8B3qEnWNPWkpIbm7Xvzftc1M', // 
+        api_url: 'https://api.coze.cn/v3/chat',
+        user_id: 'web_student_01'
+      };
+
+      var messagesEl = document.getElementById('chatMessages');
+      var inputEl = document.getElementById('chatInput');
+      var sendBtn = document.getElementById('btnSend');
+      var isLoading = false;
+
+      // ==================== 发送消息 ====================
+      function sendMessage() {
+        var text = inputEl.value.trim();
+        if (!text) return;
+        if (isLoading) {
+          // 如果没有引入 Common 组件，可以将这行改为 alert('请等待AI回复后再发送');
+          if (typeof Common !== 'undefined' && Common.toast) {
+            Common.toast('请等待AI回复后再发送');
+          } else {
+            console.warn('请等待AI回复后再发送');
+          }
+          return;
+        }
+
+        inputEl.value = '';
+        appendMessage('user', text);
+        isLoading = true;
+        
+        // 显示加载中的跳动点动画
+        appendMessage('ai', '', true);
+
+        // 检测如果填了Token，则调用接口；否则走模拟数据
+        if (COZE_CONFIG.token !== 'YOUR_API_TOKEN' && COZE_CONFIG.token.startsWith('pat_')) {
+          requestAI(text);
+        } else {
+          simulateReply(text);
+        }
+      }
+
+      // ==================== 核心重构：流式请求 Coze API ====================
+      async function requestAI(question) {
+        try {
+          var body = {
+            bot_id: COZE_CONFIG.bot_id,
+            user_id: COZE_CONFIG.user_id,
+            stream: true, // 改为 true：开启流式输出
+            additional_messages: [
+              {
+                role: 'user',
+                content: question,
+                content_type: 'text' // 必须明确声明内容类型为文本
+              }
+            ]
+          };
+
+          var response = await fetch(COZE_CONFIG.api_url, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer ' + COZE_CONFIG.token
+            },
+            body: JSON.stringify(body)
+          });
+
+          if (!response.ok) {
+            throw new Error('网络请求异常 (状态码: ' + response.status + ')');
+          }
+
+          // ===== 以下为解析 SSE 流式数据的核心逻辑 =====
+          var reader = response.body.getReader();
+          var decoder = new TextDecoder('utf-8');
+          var buffer = '';
+          var replyText = '';
+          var isFirstChunk = true;
+          var currentEvent = '';
+          var aiMsgBubble = null;
+
+          while (true) {
+            var result = await reader.read();
+            if (result.done) break;
+
+            buffer += decoder.decode(result.value, { stream: true });
+            var lines = buffer.split('\n');
+            buffer = lines.pop(); // 保留最后一行（可能被截断的数据），等待下一次拼接
+
+            for (var i = 0; i < lines.length; i++) {
+              var line = lines[i].trim();
+              if (!line) continue;
+
+              if (line.startsWith('event:')) {
+                currentEvent = line.substring(6).trim();
+              } else if (line.startsWith('data:')) {
+                var dataStr = line.substring(5).trim();
+                if (dataStr === '[DONE]') continue;
+
+                try {
+                  var data = JSON.parse(dataStr);
+                  
+                  // 只提取 AI 助手的最终回答（过滤掉内部插件运行等状态）
+                  if (currentEvent === 'conversation.message.delta' && data.role === 'assistant' && data.type === 'answer') {
+                    // 当收到第一个有效字时，移除加载动画，并创建真实气泡
+                    if (isFirstChunk) {
+                      removeTyping(); 
+                      aiMsgBubble = createEmptyAiMessage(); 
+                      isFirstChunk = false;
+                    }
+                    if (data.content) {
+                      replyText += data.content;
+                      updateAiMessage(aiMsgBubble, replyText); // 逐字刷新UI
+                    }
+                  }
+                } catch (e) {
+                  console.warn('忽略解析流式数据块警告:', e);
+                }
+              }
+            }
+          }
+
+          // 兜底：如果因为某些原因流结束了但什么都没渲染
+          if (isFirstChunk) {
+            removeTyping();
+            appendMessage('ai', '抱歉，小橙导购正在开小差，请重新提问。');
+          }
+          isLoading = false;
+
+        } catch (err) {
+          removeTyping();
+          isLoading = false;
+          console.error('Coze API 请求失败：', err);
+          appendMessage('ai', '网络连接失败，请检查配置或网络。\n(' + err.message + ')');
+        }
+      }
+
+      // ==================== UI 渲染与辅助函数 ====================
+
+      function simulateReply(text) {
+        var delay = 800 + Math.random() * 1000;
+        setTimeout(function () {
+          removeTyping();
+          isLoading = false;
+          appendMessage('ai', "这是本地模拟回复。\n\n提示：您尚未填写正确的 Coze API Token，请在代码的 COZE_CONFIG 中配置您的 pat_ 密钥。");
+        }, delay);
+      }
+
+      function appendMessage(role, text, isTyping) {
+        var div = document.createElement('div');
+        div.className = 'chat-msg ' + (role === 'user' ? 'user-msg' : 'ai-msg');
+        if (isTyping) {
+          div.classList.add('ai-typing');
+          div.innerHTML = '<div class="msg-avatar"><i class="iconfont ri-customer-service-2-line"></i></div>' +
+                          '<div class="msg-bubble"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>';
+        } else if (role === 'user') {
+          div.innerHTML = '<div class="msg-bubble">' + escapeHtml(text) + '</div>';
+        } else {
+          div.innerHTML = '<div class="msg-avatar"><i class="iconfont ri-customer-service-2-line"></i></div>' +
+                          '<div class="msg-bubble">' + escapeHtml(text).replace(/\n/g, '<br>') + '</div>';
+        }
+        messagesEl.appendChild(div);
+        messagesEl.scrollTop = messagesEl.scrollHeight;
+      }
+
+      // 为流式输出准备：创建一个空的 AI 消息气泡并返回该 DOM 节点
+      function createEmptyAiMessage() {
+        var div = document.createElement('div');
+        div.className = 'chat-msg ai-msg';
+        div.innerHTML = '<div class="msg-avatar"><i class="iconfont ri-customer-service-2-line"></i></div>' +
+                        '<div class="msg-bubble ai-reply-content"></div>';
+        messagesEl.appendChild(div);
+        messagesEl.scrollTop = messagesEl.scrollHeight;
+        return div.querySelector('.ai-reply-content');
+      }
+
+      // 为流式输出准备：动态刷新气泡内的文字
+      function updateAiMessage(bubbleEl, text) {
+        bubbleEl.innerHTML = escapeHtml(text).replace(/\n/g, '<br>');
+        messagesEl.scrollTop = messagesEl.scrollHeight;
+      }
+
+      function removeTyping() {
+        var typing = messagesEl.querySelector('.ai-typing');
+        if (typing) typing.remove();
+      }
+
+      function escapeHtml(str) {
+        if (!str) return '';
+        var div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
+      }
+
+      // ==================== 事件绑定 ====================
+      sendBtn.addEventListener('click', sendMessage);
+      inputEl.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          sendMessage();
+        }
+      });
+
+      setTimeout(function () { inputEl.focus(); }, 400);
+
+    })();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!--
+    list.html - 商品列表页
+    ============================================================
+    功能说明：展示商品分类列表，支持排序筛选，
+              两列网格布局展示商品卡片。
+    适用课程：《网页设计与制作》实训课教学
+  -->
+  <meta charset="UTF-8">
+
+  <!-- Viewport移动端适配 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+
+  <!-- 优先加载rem自适应脚本 -->
+  <script src="js/rem.js"></script>
+
+  <!-- 样式文件：图标字体 + 详情页样式 + 列表页额外样式 -->
+  <link rel="stylesheet" href="css/iconfont.css">
+  <link rel="stylesheet" href="css/compiled/style.css">
+  <link rel="stylesheet" href="css/compiled/list.css">
+
+  <title>校园商城 - 商品列表</title>
+</head>
+<body>
+
+  <!-- ==================== 顶部搜索栏（与首页共用样式） ==================== -->
+  <header class="header-search">
+    <div class="search-box">
+      <i class="iconfont ri-search-line"></i>
+      <input type="text" placeholder="搜索你想要的校园好物">
+    </div>
+    <span class="search-btn">搜索</span>
+  </header>
+
+  <!-- ==================== 排序筛选栏（固定定位在搜索栏下方） ==================== -->
+  <!-- 使用Flexbox均分排列排序选项 -->
+  <nav class="sort-bar">
+    <!-- 综合排序：默认激活 -->
+    <div class="sort-item active" data-sort="default">
+      综合排序
+    </div>
+    <!-- 销量优先 -->
+    <div class="sort-item" data-sort="sales">
+      销量优先
+    </div>
+    <!-- 价格排序：包含升降箭头 -->
+    <div class="sort-item" data-sort="price">
+      价格
+      <span class="sort-icons">
+        <i class="iconfont iconfont-xs ri-arrow-up-s-line"></i>
+        <i class="iconfont iconfont-xs ri-arrow-down-s-line"></i>
+      </span>
+    </div>
+  </nav>
+
+  <!-- ==================== 商品列表主体内容 ==================== -->
+  <main class="list-content">
+
+    <!-- ---------- 商品网格列表 ---------- -->
+    <!-- 使用Flexbox两列布局，gap控制间距，flex-wrap自动换行 -->
+    <div class="product-list">
+
+      <!-- 商品卡片1 -->
+      <a class="product-card" href="detail.html">
+        <img class="product-img" src="images/product/product-1.png" alt="女士连衣裙">
+        <div class="product-info">
+          <div class="product-title">优雅米色法式连衣裙 V领收腰 柔软面料 多色可选</div>
+          <div class="sales-info">已售 2300+</div>
+          <div class="price-row">
+            <span class="price-now">89.9</span>
+            <span class="btn-similar">找相似</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 商品卡片2 -->
+      <a class="product-card" href="detail.html">
+        <img class="product-img" src="images/product/product-2.png" alt="男士休闲鞋">
+        <div class="product-info">
+          <div class="product-title">白色运动休闲鞋 网面材质 厚底防滑 潮男必备</div>
+          <div class="sales-info">已售 5600+</div>
+          <div class="price-row">
+            <span class="price-now">19.9</span>
+            <span class="btn-similar">找相似</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 商品卡片3 -->
+      <a class="product-card" href="detail.html">
+        <img class="product-img" src="images/product/product-3.png" alt="女士手提包">
+        <div class="product-info">
+          <div class="product-title">焦糖色真皮质感手提包 金色五金 简约气质</div>
+          <div class="sales-info">已售 890+</div>
+          <div class="price-row">
+            <span class="price-now">299.9</span>
+            <span class="btn-similar">找相似</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 商品卡片4 -->
+      <a class="product-card" href="detail.html">
+        <img class="product-img" src="images/product/product-4.png" alt="蓝牙耳机">
+        <div class="product-info">
+          <div class="product-title">白色真无线蓝牙耳机 降噪运动 超长续航</div>
+          <div class="sales-info">已售 12000+</div>
+          <div class="price-row">
+            <span class="price-now">25.9</span>
+            <span class="btn-similar">找相似</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 商品卡片5 -->
+      <a class="product-card" href="detail.html">
+        <img class="product-img" src="images/product/product-5.png" alt="男士卫衣">
+        <div class="product-info">
+          <div class="product-title">浅灰色连帽卫衣 纯棉质感 宽松版型 情侣款</div>
+          <div class="sales-info">已售 3400+</div>
+          <div class="price-row">
+            <span class="price-now">15.9</span>
+            <span class="btn-similar">找相似</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 商品卡片6 -->
+      <a class="product-card" href="detail.html">
+        <img class="product-img" src="images/product/product-6.png" alt="遮阳帽">
+        <div class="product-info">
+          <div class="product-title">米色宽檐遮阳帽 蝴蝶结装饰 紫外线防护</div>
+          <div class="sales-info">已售 7800+</div>
+          <div class="price-row">
+            <span class="price-now">35.9</span>
+            <span class="btn-similar">找相似</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 商品卡片7 -->
+      <a class="product-card" href="detail.html">
+        <img class="product-img" src="images/product/product-7.png" alt="女士凉鞋">
+        <div class="product-info">
+          <div class="product-title">棕色罗马风平底凉鞋 交叉绑带 复古文艺</div>
+          <div class="sales-info">已售 4100+</div>
+          <div class="price-row">
+            <span class="price-now">22.9</span>
+            <span class="btn-similar">找相似</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 商品卡片8 -->
+      <a class="product-card" href="detail.html">
+        <img class="product-img" src="images/product/product-8.png" alt="智能手表">
+        <div class="product-info">
+          <div class="product-title">黑色方形智能手表 心率监测 消息提醒 防水</div>
+          <div class="sales-info">已售 2600+</div>
+          <div class="price-row">
+            <span class="price-now">45.9</span>
+            <span class="btn-similar">找相似</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 商品卡片9 -->
+      <a class="product-card" href="detail.html">
+        <img class="product-img" src="images/product/product-9.png" alt="双肩背包">
+        <div class="product-info">
+          <div class="product-title">藏蓝色帆布双肩背包 皮革扣带 大容量通勤</div>
+          <div class="sales-info">已售 9500+</div>
+          <div class="price-row">
+            <span class="price-now">59.9</span>
+            <span class="btn-similar">找相似</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 商品卡片10 -->
+      <a class="product-card" href="detail.html">
+        <img class="product-img" src="images/product/product-10.png" alt="女士墨镜">
+        <div class="product-info">
+          <div class="product-title">黑色大框太阳镜 金色镜腿 防紫外线 时尚百搭</div>
+          <div class="sales-info">已售 15000+</div>
+          <div class="price-row">
+            <span class="price-now">49.9</span>
+            <span class="btn-similar">找相似</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 商品卡片11 -->
+      <a class="product-card" href="detail.html">
+        <img class="product-img" src="images/product/product-11.png" alt="无线鼠标">
+        <div class="product-info">
+          <div class="product-title">白色无线静音鼠标 轻薄便携 办公学习两用</div>
+          <div class="sales-info">已售 6700+</div>
+          <div class="price-row">
+            <span class="price-now">39.9</span>
+            <span class="btn-similar">找相似</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 商品卡片12 -->
+      <a class="product-card" href="detail.html">
+        <img class="product-img" src="images/product/product-12.png" alt="充电宝">
+        <div class="product-info">
+          <div class="product-title">超薄便携充电宝 10000mAh LED数显 快充</div>
+          <div class="sales-info">已售 4300+</div>
+          <div class="price-row">
+            <span class="price-now">29.9</span>
+            <span class="btn-similar">找相似</span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </main>
+
+  <!-- ==================== 底部固定导航栏 ==================== -->
+  <footer class="tabbar">
+    <div class="tab-item" data-link="index.html">
+      <i class="iconfont ri-home-line"></i>
+      <span class="tab-label">首页</span>
+    </div>
+    <div class="tab-item active" data-link="list.html">
+      <i class="iconfont ri-apps-2-line"></i>
+      <span class="tab-label">分类</span>
+    </div>
+    <div class="tab-item" data-link="cart.html">
+      <i class="iconfont ri-shopping-cart-line"></i>
+      <span class="tab-label">购物车</span>
+    </div>
+    <div class="tab-item" data-link="my.html">
+      <i class="iconfont ri-user-line"></i>
+      <span class="tab-label">我的</span>
+    </div>
+    <!-- 中间凸起 AI 导购按钮 -->
+    <div class="tab-center" onclick="location.href='ai-chat.html'">
+      <i class="iconfont ri-customer-service-2-line"></i>
+      <span class="tab-label">AI导购</span>
+    </div>
+  </footer>
+
+  <!-- ==================== JavaScript脚本 ==================== -->
+  <script src="js/common.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // 初始化底部Tab切换
+      Common.initTabbar();
+
+      // 初始化搜索栏
+      Common.initSearch();
+
+      // ==================== 排序功能实现 ====================
+      var sortItems = document.querySelectorAll('.sort-bar .sort-item');
+
+      sortItems.forEach(function (item) {
+        item.addEventListener('click', function () {
+          var currentActive = document.querySelector('.sort-bar .sort-item.active');
+
+          // 如果点击的是价格排序（支持升序/降序切换）
+          if (this.getAttribute('data-sort') === 'price') {
+            if (currentActive === this) {
+              // 同一价格按钮：切换升序/降序
+              if (this.classList.contains('asc')) {
+                this.classList.remove('asc');
+                this.classList.add('desc');
+                Common.toast('价格从高到低');
+              } else {
+                this.classList.remove('desc');
+                this.classList.add('asc');
+                Common.toast('价格从低到高');
+              }
+              return;
+            } else {
+              // 首次点击价格：默认升序
+              currentActive.classList.remove('active');
+              this.classList.add('active', 'asc');
+              Common.toast('价格从低到高');
+              return;
+            }
+          }
+
+          // 综合排序和销量优先：直接切换高亮
+          if (currentActive) {
+            currentActive.classList.remove('active');
+          }
+          this.classList.add('active');
+
+          var sortType = this.getAttribute('data-sort');
+          if (sortType === 'default') {
+            Common.toast('综合排序');
+          } else if (sortType === 'sales') {
+            Common.toast('销量优先');
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>

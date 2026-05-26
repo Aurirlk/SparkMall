@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!--
+    my.html - 我的 / 个人中心页面
+    ============================================================
+    功能说明：个人中心页面，包含：
+              - 用户信息展示（头像、昵称、会员等级）
+              - 我的订单功能入口（5项）
+              - 常用功能菜单列表
+              - 退出登录
+    适用课程：《网页设计与制作》实训课教学
+  -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <script src="js/rem.js"></script>
+  <link rel="stylesheet" href="css/iconfont.css">
+  <link rel="stylesheet" href="css/compiled/style.css">
+  <link rel="stylesheet" href="css/compiled/my.css">
+  <title>校园商城 - 我的</title>
+</head>
+<body>
+
+  <!-- ==================== 顶部导航栏 ==================== -->
+  <header class="my-header">
+    <span class="header-title">我的</span>
+    <span class="btn-settings">
+      <i class="iconfont ri-settings-line"></i>
+    </span>
+  </header>
+
+  <!-- ==================== 主体内容 ==================== -->
+  <main class="my-content">
+
+    <!-- ---------- 用户信息卡片 ---------- -->
+    <section class="user-card">
+      <div class="user-avatar">
+        <img src="images/icons/icon_avatar.png" alt="头像">
+      </div>
+      <div class="user-info">
+        <div class="user-name">校园同学</div>
+        <div class="user-level">
+          <i class="iconfont ri-vip-crown-line" style="color:#FFB800;"></i>
+          <span>普通会员</span>
+        </div>
+      </div>
+      <div class="user-extra">
+        <span class="btn-edit-profile">编辑资料 &gt;</span>
+      </div>
+    </section>
+
+    <!-- ---------- 我的订单 ---------- -->
+    <section class="order-section">
+      <div class="section-header">
+        <span class="section-title">我的订单</span>
+        <span class="section-more">查看全部订单 &gt;</span>
+      </div>
+      <div class="order-grid">
+        <div class="order-item">
+          <i class="order-icon iconfont ri-bank-card-line"></i>
+          <span class="order-label">待付款</span>
+          <span class="order-badge">2</span>
+        </div>
+        <div class="order-item">
+          <i class="order-icon iconfont ri-truck-line"></i>
+          <span class="order-label">待发货</span>
+          <span class="order-badge">1</span>
+        </div>
+        <div class="order-item">
+          <i class="order-icon iconfont ri-inbox-line"></i>
+          <span class="order-label">待收货</span>
+        </div>
+        <div class="order-item">
+          <i class="order-icon iconfont ri-chat-3-line"></i>
+          <span class="order-label">待评价</span>
+          <span class="order-badge">3</span>
+        </div>
+        <div class="order-item">
+          <i class="order-icon iconfont ri-shield-check-line"></i>
+          <span class="order-label">退款/售后</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------- 常用功能菜单 ---------- -->
+    <section class="menu-section">
+      <div class="menu-group">
+        <div class="menu-item">
+          <div class="menu-left">
+            <i class="menu-icon iconfont ri-star-line"></i>
+            <span class="menu-label">我的收藏</span>
+          </div>
+          <i class="menu-arrow iconfont ri-arrow-right-s-line"></i>
+        </div>
+        <div class="menu-item">
+          <div class="menu-left">
+            <i class="menu-icon iconfont ri-map-pin-line"></i>
+            <span class="menu-label">收货地址</span>
+          </div>
+          <i class="menu-arrow iconfont ri-arrow-right-s-line"></i>
+        </div>
+        <div class="menu-item">
+          <div class="menu-left">
+            <i class="menu-icon iconfont ri-history-line"></i>
+            <span class="menu-label">浏览记录</span>
+          </div>
+          <i class="menu-arrow iconfont ri-arrow-right-s-line"></i>
+        </div>
+        <div class="menu-item">
+          <div class="menu-left">
+            <i class="menu-icon iconfont ri-customer-service-2-line"></i>
+            <span class="menu-label">联系客服</span>
+          </div>
+          <i class="menu-arrow iconfont ri-arrow-right-s-line"></i>
+        </div>
+      </div>
+
+      <div class="menu-group">
+        <div class="menu-item">
+          <div class="menu-left">
+            <i class="menu-icon iconfont ri-coupon-line"></i>
+            <span class="menu-label">优惠券</span>
+          </div>
+          <div class="menu-right">
+            <span class="menu-value">3张可用</span>
+            <i class="menu-arrow iconfont ri-arrow-right-s-line"></i>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-left">
+            <i class="menu-icon iconfont ri-vip-crown-line"></i>
+            <span class="menu-label">会员中心</span>
+          </div>
+          <i class="menu-arrow iconfont ri-arrow-right-s-line"></i>
+        </div>
+        <div class="menu-item">
+          <div class="menu-left">
+            <i class="menu-icon iconfont ri-information-line"></i>
+            <span class="menu-label">关于我们</span>
+          </div>
+          <i class="menu-arrow iconfont ri-arrow-right-s-line"></i>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------- 退出登录按钮 ---------- -->
+    <div class="logout-area">
+      <button class="btn-logout">退出登录</button>
+    </div>
+
+  </main>
+
+  <!-- ==================== 底部导航栏 ==================== -->
+  <footer class="tabbar">
+    <div class="tab-item" data-link="index.html">
+      <i class="iconfont ri-home-line"></i>
+      <span class="tab-label">首页</span>
+    </div>
+    <div class="tab-item" data-link="list.html">
+      <i class="iconfont ri-apps-2-line"></i>
+      <span class="tab-label">分类</span>
+    </div>
+    <div class="tab-item" data-link="cart.html">
+      <i class="iconfont ri-shopping-cart-line"></i>
+      <span class="tab-label">购物车</span>
+    </div>
+    <div class="tab-item active" data-link="my.html">
+      <i class="iconfont ri-user-line"></i>
+      <span class="tab-label">我的</span>
+    </div>
+    <!-- 中间凸起 AI 导购按钮 -->
+    <div class="tab-center" onclick="location.href='ai-chat.html'">
+      <i class="iconfont ri-customer-service-2-line"></i>
+      <span class="tab-label">AI导购</span>
+    </div>
+  </footer>
+
+  <!-- ==================== JavaScript脚本 ==================== -->
+  <script src="js/common.js"></script>
+  <script src="js/my.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,210 @@
+/**
+ * ai-chat.css - AI导购独立页面样式
+ */
+
+/* ==================== 顶部导航栏 ==================== */
+
+.chat-header {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  width: 100%;
+  max-width: 640px;
+  height: 1.17rem;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  display: flex;
+  align-items: center;
+  padding: 0 0.32rem;
+}
+
+.chat-header .btn-back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 0.8rem;
+  height: 0.8rem;
+  flex-shrink: 0;
+}
+
+.chat-header .btn-back .iconfont {
+  font-size: 0.56rem;
+  color: #ffffff;
+}
+
+.chat-header .header-title {
+  flex: 1;
+  text-align: center;
+  font-size: 0.4rem;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.chat-header .header-placeholder {
+  width: 0.8rem;
+  flex-shrink: 0;
+}
+
+/* ==================== 消息区域 ==================== */
+
+.chat-messages {
+  position: fixed;
+  top: 1.17rem;
+  bottom: 1.33rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 640px;
+  overflow-y: auto;
+  padding: 0.32rem;
+  background: #f0f2f5;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ==================== 单条消息 ==================== */
+
+.chat-msg {
+  display: flex;
+  margin-bottom: 0.32rem;
+  animation: msg-in 0.3s ease;
+}
+
+@keyframes msg-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.chat-msg.ai-msg {
+  justify-content: flex-start;
+}
+
+.chat-msg.user-msg {
+  justify-content: flex-end;
+}
+
+/* ---------- AI头像 ---------- */
+
+.chat-msg.ai-msg .msg-avatar {
+  width: 0.85rem;
+  height: 0.85rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-right: 0.24rem;
+}
+
+.chat-msg.ai-msg .msg-avatar .iconfont {
+  color: #ffffff;
+  font-size: 0.48rem;
+}
+
+/* ---------- 气泡 ---------- */
+
+.chat-msg .msg-bubble {
+  max-width: 75%;
+  padding: 0.24rem 0.32rem;
+  font-size: 0.32rem;
+  line-height: 1.6;
+  word-break: break-all;
+  white-space: pre-wrap;
+}
+
+.chat-msg.ai-msg .msg-bubble {
+  background: #ffffff;
+  border-radius: 4px 12px 12px 12px;
+  color: #333333;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+}
+
+.chat-msg.user-msg .msg-bubble {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-radius: 12px 4px 12px 12px;
+  color: #ffffff;
+}
+
+/* ---------- 输入中动画 ---------- */
+
+.chat-msg.ai-typing .msg-bubble {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.32rem 0.4rem;
+}
+
+.chat-msg.ai-typing .dot {
+  width: 8px;
+  height: 8px;
+  background: #cccccc;
+  border-radius: 50%;
+  animation: dot-bounce 1.4s ease-in-out infinite;
+}
+
+.chat-msg.ai-typing .dot:nth-child(1) { animation-delay: 0s; }
+.chat-msg.ai-typing .dot:nth-child(2) { animation-delay: 0.2s; }
+.chat-msg.ai-typing .dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes dot-bounce {
+  0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+  40% { transform: scale(1); opacity: 1; }
+}
+
+/* ==================== 底部输入栏 ==================== */
+
+.chat-input-bar {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  width: 100%;
+  max-width: 640px;
+  height: 1.33rem;
+  background: #ffffff;
+  border-top: 1px solid #eeeeee;
+  display: flex;
+  align-items: center;
+  padding: 0 0.24rem;
+  gap: 0.16rem;
+}
+
+.chat-input-bar input {
+  flex: 1;
+  height: 0.85rem;
+  background: #f5f5f5;
+  border-radius: 20px;
+  padding: 0 0.32rem;
+  font-size: 0.32rem;
+  color: #333333;
+  border: none;
+  outline: none;
+}
+
+.chat-input-bar input::placeholder {
+  color: #cccccc;
+}
+
+.chat-input-bar .btn-send {
+  width: 0.85rem;
+  height: 0.85rem;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.chat-input-bar .btn-send:active {
+  transform: scale(0.9);
+}
+
+.chat-input-bar .btn-send .iconfont {
+  color: #ffffff;
+  font-size: 0.48rem;
+}

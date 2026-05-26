@@ -1,0 +1,634 @@
+/* ============================================================
+ * 商品详情页样式 (detail.less)
+ * 用途：商品详情页专属样式定义
+ * 依赖：common.less（变量定义）
+ * ============================================================ */
+
+@import "common.less";
+
+/* ==================== 详情页顶部导航栏 ==================== */
+
+/* 固定在顶部的导航栏 */
+.detail-header {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  width: 100%;
+  max-width: @max-page-width;
+  height: @header-height;
+  background: @bg-white;
+  border-bottom: 1px solid @border-color;
+  display: flex;
+  align-items: center;
+  padding: 0 @spacing-lg;
+}
+
+/* 返回按钮 */
+.detail-header .btn-back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 0.8rem;
+  height: 0.8rem;
+  flex-shrink: 0;
+}
+
+.detail-header .btn-back .iconfont {
+  font-size: 0.56rem;
+  color: @text-dark;
+}
+
+/* 标题文字（居中） */
+.detail-header .header-title {
+  flex: 1;
+  text-align: center;
+  font-size: @font-lg;
+  color: @text-dark;
+  font-weight: bold;
+  /* 单行省略 */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 @spacing-lg;
+}
+
+/* 右侧占位（保持标题居中） */
+.detail-header .header-placeholder {
+  width: 0.8rem;
+  flex-shrink: 0;
+}
+
+/* 分享按钮 */
+.detail-header .btn-share {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 0.8rem;
+  height: 0.8rem;
+  flex-shrink: 0;
+}
+
+.detail-header .btn-share .iconfont {
+  font-size: 0.48rem;
+  color: @text-dark;
+}
+
+/* ==================== 详情主体内容 ==================== */
+
+/* 为固定头部留出空间 */
+.detail-content {
+  padding-top: @header-height;
+  padding-bottom: 1.6rem;  /* 留出底部购买栏空间 */
+  background: @bg-light;
+}
+
+/* ---------- 商品大图区域 ---------- */
+
+.product-gallery {
+  width: 100%;
+  background: @bg-white;
+  position: relative;
+}
+
+.product-gallery .gallery-main {
+  width: 100%;
+  display: block;
+}
+
+/* ---------- 商品价格区域 ---------- */
+
+.price-section {
+  background: @bg-white;
+  padding: @spacing-lg;
+  border-bottom: 1px solid @border-color;
+}
+
+.price-section .price-wrap {
+  display: flex;
+  align-items: baseline;
+}
+
+.price-section .price-now {
+  font-size: 0.72rem;  /* 27px */
+  font-weight: bold;
+  color: @price-red;
+}
+
+.price-section .price-now::before {
+  content: "¥";
+  font-size: @font-lg;
+}
+
+.price-section .price-old {
+  font-size: @font-sm;
+  color: @text-light;
+  text-decoration: line-through;
+  margin-left: @spacing-md;
+}
+
+.price-section .price-old::before {
+  content: "¥";
+}
+
+/* 促销标签 */
+.price-section .promo-tags {
+  display: flex;
+  gap: @spacing-sm;
+  margin-top: @spacing-sm;
+}
+
+.price-section .promo-tag {
+  font-size: @font-xs;
+  color: @primary-color;
+  background: #fff3ed;
+  padding: 2px @spacing-sm;
+  border-radius: @radius-sm;
+  border: 1px solid #ffd4c0;
+}
+
+/* ---------- 商品标题 ---------- */
+
+.title-section {
+  background: @bg-white;
+  padding: @spacing-lg;
+  margin-top: @spacing-md;
+}
+
+.title-section .product-title {
+  font-size: @font-lg;
+  color: @text-dark;
+  font-weight: bold;
+  line-height: 1.5;
+}
+
+.title-section .product-subtitle {
+  font-size: @font-sm;
+  color: @price-red;
+  margin-top: @spacing-sm;
+  background: #fff3ed;
+  display: inline-block;
+  padding: 2px @spacing-sm;
+  border-radius: @radius-sm;
+}
+
+/* ---------- 规格选择区域 ---------- */
+
+.spec-section {
+  background: @bg-white;
+  padding: @spacing-lg;
+  margin-top: @spacing-md;
+}
+
+.spec-section .spec-title {
+  font-size: @font-md;
+  color: @text-dark;
+  font-weight: bold;
+  margin-bottom: @spacing-lg;
+}
+
+/* 规格按钮组 */
+.spec-section .spec-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: @spacing-md;
+}
+
+.spec-section .spec-btn {
+  padding: @spacing-sm @spacing-lg;
+  font-size: @font-md;
+  color: @text-dark;
+  background: @bg-light;
+  border: 1px solid @border-color;
+  border-radius: @radius-sm;
+  cursor: pointer;
+  transition: all @transition-fast;
+  min-width: 1.6rem;
+  text-align: center;
+}
+
+/* 规格按钮选中状态 */
+.spec-section .spec-btn.active {
+  color: @primary-color;
+  background: #fff3ed;
+  border-color: @primary-color;
+}
+
+/* 规格按钮禁用状态（不可选规格） */
+.spec-section .spec-btn.disabled {
+  color: @text-light;
+  background: @bg-light;
+  border-color: @border-color;
+  cursor: not-allowed;
+  position: relative;
+  overflow: hidden;
+}
+
+.spec-section .spec-btn.disabled::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -10%;
+  width: 120%;
+  height: 1px;
+  background: @text-light;
+  transform: rotate(-30deg);
+}
+
+/* ---------- 商品详情描述 ---------- */
+
+.desc-section {
+  background: @bg-white;
+  padding: @spacing-lg;
+  margin-top: @spacing-md;
+}
+
+.desc-section .desc-title {
+  font-size: @font-md;
+  color: @text-dark;
+  font-weight: bold;
+  margin-bottom: @spacing-md;
+  text-align: center;
+}
+
+.desc-section .desc-content {
+  font-size: @font-md;
+  color: @text-gray;
+  line-height: 1.8;
+}
+
+/* ==================== 底部购买操作栏 ==================== */
+
+/* 固定在底部的购买栏 */
+.buy-bar {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  width: 100%;
+  max-width: @max-page-width;
+  height: 1.33rem;   /* 50px */
+  background: @bg-white;
+  border-top: 1px solid @border-color;
+  display: flex;
+  align-items: center;
+  padding: 0 @spacing-lg;
+  gap: @spacing-md;
+}
+
+/* 左侧图标按钮组 */
+.buy-bar .bar-icons {
+  display: flex;
+  gap: @spacing-lg;
+  flex-shrink: 0;
+}
+
+.buy-bar .bar-icon-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.buy-bar .bar-icon-item .iconfont {
+  font-size: 0.56rem;
+  color: @text-dark;
+}
+
+.buy-bar .bar-icon-item .icon-label {
+  font-size: @font-xs;
+  color: @text-gray;
+  margin-top: 2px;
+}
+
+/* 加入购物车按钮 */
+.buy-bar .btn-add-cart {
+  flex: 1;
+  height: 0.96rem;   /* 36px */
+  background: linear-gradient(135deg, @primary-light, @primary-color);
+  color: @bg-white;
+  font-size: @font-lg;
+  font-weight: bold;
+  border-radius: @radius-sm + 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity @transition-fast;
+}
+
+.buy-bar .btn-add-cart:active {
+  opacity: 0.8;
+}
+
+/* 立即购买按钮 */
+.buy-bar .btn-buy-now {
+  flex: 1;
+  height: 0.96rem;   /* 36px */
+  background: linear-gradient(135deg, #ff7840, @price-red);
+  color: @bg-white;
+  font-size: @font-lg;
+  font-weight: bold;
+  border-radius: @radius-sm + 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity @transition-fast;
+}
+
+.buy-bar .btn-buy-now:active {
+  opacity: 0.8;
+}
+
+/* ==================== AI导购悬浮按钮 ==================== */
+
+/* 右下角悬浮圆形按钮 */
+.ai-float-btn {
+  position: fixed;
+  bottom: 2.13rem;   /* 80px，在购买栏上方 */
+  right: @spacing-lg;
+  z-index: 99;
+  width: 1.33rem;    /* 50px */
+  height: 1.33rem;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-radius: @radius-round;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: @shadow-lg;
+  cursor: pointer;
+  transition: transform @transition-fast, box-shadow @transition-fast;
+  animation: ai-float-bounce 2s ease-in-out infinite;
+}
+
+.ai-float-btn:active {
+  transform: scale(0.92);
+}
+
+.ai-float-btn .iconfont {
+  color: @bg-white;
+  font-size: 0.64rem;
+}
+
+/* 轻微浮动动画 */
+@keyframes ai-float-bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+/* ==================== AI导购对话框 ==================== */
+
+/* 遮罩层 */
+.ai-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 200;
+  display: none;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.ai-overlay.open {
+  display: flex;
+}
+
+/* 对话框主体 */
+.ai-dialog {
+  width: 100%;
+  max-width: @max-page-width;
+  height: 75vh;
+  background: @bg-white;
+  border-radius: @radius-lg @radius-lg 0 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: ai-dialog-slide-up 0.3s ease;
+}
+
+@keyframes ai-dialog-slide-up {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* 对话框标题栏 */
+.ai-dialog .ai-dialog-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: @spacing-lg;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: @bg-white;
+  flex-shrink: 0;
+}
+
+.ai-dialog .ai-dialog-header .ai-title {
+  font-size: @font-lg;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: @spacing-sm;
+}
+
+.ai-dialog .ai-dialog-header .btn-close {
+  width: 0.8rem;
+  height: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.ai-dialog .ai-dialog-header .btn-close .iconfont {
+  color: @bg-white;
+  font-size: 0.48rem;
+}
+
+/* 消息列表区域 */
+.ai-dialog .ai-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: @spacing-lg;
+  background: #f8f9fa;
+}
+
+/* 单条消息 */
+.ai-dialog .ai-message {
+  display: flex;
+  margin-bottom: @spacing-lg;
+  animation: ai-msg-fade-in 0.3s ease;
+}
+
+@keyframes ai-msg-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* AI消息（左侧） */
+.ai-dialog .ai-message.ai-msg {
+  justify-content: flex-start;
+}
+
+.ai-dialog .ai-message.ai-msg .msg-avatar {
+  width: 0.85rem;    /* 32px */
+  height: 0.85rem;
+  border-radius: @radius-round;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-right: @spacing-md;
+}
+
+.ai-dialog .ai-message.ai-msg .msg-avatar .iconfont {
+  color: @bg-white;
+  font-size: 0.48rem;
+}
+
+.ai-dialog .ai-message.ai-msg .msg-bubble {
+  max-width: 75%;
+  background: @bg-white;
+  border-radius: @radius-sm @radius-md @radius-md @radius-sm;
+  padding: @spacing-md;
+  font-size: @font-md;
+  color: @text-dark;
+  line-height: 1.6;
+  box-shadow: @shadow-sm;
+  word-break: break-all;
+}
+
+/* 用户消息（右侧） */
+.ai-dialog .ai-message.user-msg {
+  justify-content: flex-end;
+}
+
+.ai-dialog .ai-message.user-msg .msg-bubble {
+  max-width: 75%;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-radius: @radius-md @radius-sm @radius-sm @radius-md;
+  padding: @spacing-md;
+  font-size: @font-md;
+  color: @bg-white;
+  line-height: 1.6;
+  word-break: break-all;
+}
+
+/* AI正在输入动画 */
+.ai-dialog .ai-typing .msg-bubble {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: @spacing-lg @spacing-md;
+}
+
+.ai-dialog .ai-typing .typing-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: @radius-round;
+  background: @text-gray;
+  animation: ai-typing-bounce 1.2s infinite;
+}
+
+.ai-dialog .ai-typing .typing-dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.ai-dialog .ai-typing .typing-dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes ai-typing-bounce {
+  0%, 60%, 100% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-6px);
+  }
+}
+
+/* 输入区域 */
+.ai-dialog .ai-input-area {
+  display: flex;
+  align-items: center;
+  padding: @spacing-md @spacing-lg;
+  background: @bg-white;
+  border-top: 1px solid @border-color;
+  gap: @spacing-md;
+  flex-shrink: 0;
+}
+
+.ai-dialog .ai-input-area input {
+  flex: 1;
+  height: 0.96rem;   /* 36px */
+  background: @bg-light;
+  border-radius: @radius-sm + 16px;
+  padding: 0 @spacing-lg;
+  font-size: @font-md;
+  color: @text-dark;
+}
+
+.ai-dialog .ai-input-area input::placeholder {
+  color: @text-light;
+}
+
+.ai-dialog .ai-input-area .btn-send {
+  width: 0.96rem;
+  height: 0.96rem;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-radius: @radius-round;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform @transition-fast;
+}
+
+.ai-dialog .ai-input-area .btn-send:active {
+  transform: scale(0.9);
+}
+
+.ai-dialog .ai-input-area .btn-send .iconfont {
+  color: @bg-white;
+  font-size: 0.48rem;
+}
+
+/* ==================== Toast提示（复用首页样式） ==================== */
+
+.toast {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  z-index: 300;
+  background: rgba(0, 0, 0, 0.75);
+  color: @bg-white;
+  padding: @spacing-lg @spacing-xl;
+  border-radius: @radius-md;
+  font-size: @font-md;
+  white-space: nowrap;
+  pointer-events: none;
+  transition: transform @transition-fast;
+}
+
+.toast.show {
+  transform: translate(-50%, -50%) scale(1);
+}

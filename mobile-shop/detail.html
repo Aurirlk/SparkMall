@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!--
+    detail.html - 商品详情页
+    ============================================================
+    功能说明：展示单个商品的详细信息，包含：
+              - 商品大图
+              - 价格与促销标签
+              - 商品标题
+              - 规格选择（可选颜色、尺寸）
+              - 加入购物车/立即购买按钮
+              - AI智能导购对话框
+    适用课程：《网页设计与制作》实训课教学
+  -->
+  <meta charset="UTF-8">
+
+  <!-- Viewport移动端适配 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+
+  <!-- 优先加载rem自适应脚本 -->
+  <script src="js/rem.js"></script>
+
+  <!-- 样式文件：图标字体 + 首页共用样式 + 详情页专属样式 -->
+  <link rel="stylesheet" href="css/iconfont.css">
+  <link rel="stylesheet" href="css/compiled/style.css">
+  <link rel="stylesheet" href="css/compiled/detail.css">
+
+  <title>校园商城 - 商品详情</title>
+</head>
+<body>
+
+  <!-- ==================== 顶部导航栏（固定定位，回退+标题+分享） ==================== -->
+  <header class="detail-header">
+    <!-- 返回按钮 -->
+    <a href="javascript:history.back()" class="btn-back">
+      <i class="iconfont ri-arrow-left-line"></i>
+    </a>
+    <!-- 标题：居中显示，flex:1撑满空间 -->
+    <span class="header-title">商品详情</span>
+    <!-- 右侧分享按钮 -->
+    <span class="btn-share">
+      <i class="iconfont ri-share-forward-line"></i>
+    </span>
+  </header>
+
+  <!-- ==================== 商品详情主体内容 ==================== -->
+  <main class="detail-content">
+
+    <!-- ---------- 商品大图区域 ---------- -->
+    <section class="product-gallery">
+      <img class="gallery-main"
+           src="images/detail/detail_hoodie.png"
+           alt="米色法式连衣裙 - 商品大图">
+    </section>
+
+    <!-- ---------- 价格与促销区域 ---------- -->
+    <section class="price-section">
+      <!-- 现价和原价对比 -->
+      <div class="price-wrap">
+        <span class="price-now">189</span>
+        <span class="price-old">399</span>
+      </div>
+      <!-- 促销标签组 -->
+      <div class="promo-tags">
+        <span class="promo-tag">满99减15</span>
+        <span class="promo-tag">包邮</span>
+        <span class="promo-tag">7天无理由</span>
+        <span class="promo-tag">正品保证</span>
+      </div>
+    </section>
+
+    <!-- ---------- 商品标题区域 ---------- -->
+    <section class="title-section">
+      <h1 class="product-title">优雅米色法式连衣裙 V领收腰 柔软面料 多色可选</h1>
+      <div class="product-subtitle">
+        <i class="iconfont iconfont-sm ri-customer-service-2-line" style="margin-right:4px;"></i>
+        新品上市 | 领券到手价 ¥169
+      </div>
+    </section>
+
+    <!-- ---------- 规格选择区域 ---------- -->
+    <section class="spec-section">
+      <div class="spec-title">选择颜色</div>
+      <div class="spec-group">
+        <!-- 规格按钮：点击高亮active状态 -->
+        <span class="spec-btn active">米色</span>
+        <span class="spec-btn">藏蓝</span>
+        <span class="spec-btn">黑色</span>
+        <span class="spec-btn disabled">酒红（缺货）</span>
+        <span class="spec-btn">墨绿</span>
+      </div>
+
+      <div class="spec-title" style="margin-top:0.4rem;">选择尺码</div>
+      <div class="spec-group">
+        <span class="spec-btn">S（160）</span>
+        <span class="spec-btn active">M（165）</span>
+        <span class="spec-btn">L（170）</span>
+        <span class="spec-btn">XL（175）</span>
+        <span class="spec-btn">2XL（180）</span>
+      </div>
+    </section>
+
+    <!-- ---------- 商品详情描述区域 ---------- -->
+    <section class="desc-section">
+      <div class="desc-title">—— 商品详情 ——</div>
+      <div class="desc-content">
+        <p>📌 面料材质：优质雪纺混纺面料，亲肤柔软，垂感自然透气</p>
+        <p>📐 版型设计：V领收腰A字版型，优雅显瘦，适合多种身材</p>
+        <p>🎨 颜色可选：米色、藏蓝、黑色、酒红，四色任选</p>
+        <p>🧵 做工细节：隐形拉链，内衬精细包边，走线工整</p>
+        <p>📦 包装：精美独立包装，附赠同色系腰带</p>
+        <p>💡 洗涤建议：建议手洗或干洗，不可漂白，悬挂晾干</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== 底部购买操作栏 ==================== -->
+  <footer class="buy-bar">
+    <!-- 左侧图标组：收藏、购物车、客服 -->
+    <div class="bar-icons">
+      <div class="bar-icon-item">
+        <i class="iconfont ri-heart-line"></i>
+        <span class="icon-label">收藏</span>
+      </div>
+      <div class="bar-icon-item">
+        <i class="iconfont ri-shopping-cart-line"></i>
+        <span class="icon-label">购物车</span>
+      </div>
+      <div class="bar-icon-item">
+        <i class="iconfont ri-customer-service-2-line"></i>
+        <span class="icon-label">客服</span>
+      </div>
+    </div>
+    <!-- 加入购物车按钮（Flex自动撑满剩余空间） -->
+    <button class="btn-add-cart">加入购物车</button>
+    <!-- 立即购买按钮 -->
+    <button class="btn-buy-now">立即购买</button>
+  </footer>
+
+  <!-- ==================== JavaScript脚本 ==================== -->
+  <!-- 通用交互功能 -->
+  <script src="js/common.js"></script>
+  <!-- AI导购功能（会自动检测当前页面是否为详情页并初始化） -->
+  <script src="js/ai-chat.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // ==================== 购物车按钮点击反馈 ====================
+      Common.initAddCartButtons();
+
+      // ==================== 规格选择交互 ====================
+      var specGroups = document.querySelectorAll('.spec-group');
+
+      specGroups.forEach(function (group) {
+        group.addEventListener('click', function (e) {
+          // 查找最近的 .spec-btn 元素（事件委托）
+          var btn = e.target.closest('.spec-btn');
+          if (!btn) return;
+
+          // 禁用的规格不可选
+          if (btn.classList.contains('disabled')) {
+            Common.toast('该规格已缺货');
+            return;
+          }
+
+          // 同一组内移除其他按钮的选中状态
+          var siblings = this.querySelectorAll('.spec-btn');
+          siblings.forEach(function (sibling) {
+            sibling.classList.remove('active');
+          });
+
+          // 当前按钮添加选中状态
+          btn.classList.add('active');
+          Common.toast('已选择：' + btn.textContent);
+        });
+      });
+
+      // ==================== 底部图标按钮交互 ====================
+      var barIconItems = document.querySelectorAll('.buy-bar .bar-icon-item');
+
+      barIconItems.forEach(function (item) {
+        item.addEventListener('click', function () {
+          var label = this.querySelector('.icon-label').textContent;
+          Common.toast(label + '功能开发中');
+        });
+      });
+
+      // ==================== 立即购买按钮 ====================
+      var btnBuyNow = document.querySelector('.btn-buy-now');
+      if (btnBuyNow) {
+        btnBuyNow.addEventListener('click', function () {
+          Common.toast('已提交订单，请前往支付');
+        });
+      }
+
+      // ==================== 分享按钮 ====================
+      var btnShare = document.querySelector('.btn-share');
+      if (btnShare) {
+        btnShare.addEventListener('click', function () {
+          Common.toast('分享链接已复制');
+        });
+      }
+    });
+  </script>
+
+</body>
+</html>
