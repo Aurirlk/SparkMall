@@ -48,11 +48,15 @@
       'use strict';
 
       // ==================== Coze API 配置 ====================
+      // 请在扣子空间(https://code.coze.cn/home)搭建自己的工作流和智能体
+      // 然后填入你的 Bot ID 和 API Token
+      // 详细教程请参考 Coze/API调用教程.md
       var COZE_CONFIG = {
-        bot_id: '7642679727366438975',
-        token: 'pat_iCPkCz1fubigFeMlVOQxnKldT6dKTyIdtifDgJJN8B3qEnWNPWkpIbm7Xvzftc1M', // 
-        api_url: 'https://api.coze.cn/v3/chat',
-        user_id: 'web_student_01'
+        bot_id: 'YOUR_BOT_ID',           // 智能体 ID，在智能体设置页面获取
+        token: 'YOUR_API_TOKEN',          // pat_ 开头的密钥，在 API 密钥管理中创建
+        api_base: 'https://api.coze.cn',  // API 基础地址
+        api_url: 'https://api.coze.cn/v3/chat',  // 智能体对话 API
+        user_id: 'web_student_01'         // 用户标识，可自定义
       };
 
       var messagesEl = document.getElementById('chatMessages');
