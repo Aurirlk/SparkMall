@@ -22,7 +22,7 @@
 
 直接打开 `frontend/index.html` 即可预览。
 
-## 项目结构
+## 文件结构
 
 ```
 Coze-Shop/
